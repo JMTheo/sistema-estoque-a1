@@ -9,26 +9,23 @@ public class FabricaDeLista {
     public int menu(int escolha){
         switch (escolha){
             case 1:
-                iniciarLista();
+                if(this.listaProdutos != null){
+                    System.out.println("A lista já foi criada, retornando ao menu");
+                    break;
+                }else iniciarLista();
                 break;
             case 2:
-                //TODO: Inserir elemento na lista,
                 inserirItem();
                 break;
             case 3:
-                //Todo: Remover elemento da lista,
-                System.out.println("MENU 3");
 
+                removerItem();
                 break;
             case 4:
-                // Todo: Listar todos os elementos da lista,
-                System.out.println("MENU 4");
-
+                listarTodosProd();
                 break;
             case 5:
-                // Todo:  Listar um elemento da lista.
-                System.out.println("MENU 5");
-
+                pesquisarProd();
                 break;
             case 6:
                 System.out.println("Fechando o sistema ...");
@@ -69,6 +66,8 @@ public class FabricaDeLista {
 
             if(status.isEmpty())
                 System.out.println("Codigo maior que a lista, erro ao inserir registro");
+            else
+                System.out.println("Sucesso ao cadastrar produto");
 
             System.out.println("Deseja cadastrar mais produtos ? ");
             escolha = !(scanner.nextLine().toLowerCase().equals("n"));
@@ -77,4 +76,48 @@ public class FabricaDeLista {
 
     }
 
+    private void removerItem(){
+        int codigo = 0;
+        String status = "";
+        boolean escolha = true;
+
+        do {
+            System.out.println("Digite o codigo do produto");
+            codigo = Integer.parseInt(scanner.nextLine());
+
+            status = this.listaProdutos.removerVlr(codigo);
+
+            if(status.isEmpty())
+                System.out.println("Codigo não existe, erro ao excluir produto");
+            else
+                System.out.println("Produto removido com sucesso");
+            System.out.println("Deseja remover mais produtos ? ");
+            escolha = !(scanner.nextLine().toLowerCase().equals("n"));
+
+        }while(escolha);
+    }
+
+    private void listarTodosProd(){
+        this.listaProdutos.listarTodosProdutos();
+    }
+
+    private void pesquisarProd(){
+        boolean condicao = true;
+        int codProd;
+        String status;
+        do {
+            System.out.println("Digite o codigo do produto: ");
+            codProd = Integer.parseInt(scanner.nextLine());
+
+            status = this.listaProdutos.pesquisarElemento(codProd);
+
+            if(status.isEmpty())
+                System.out.println("Codigo não existe, erro ao buscar produto");
+            else
+                System.out.println("Codigo: " + codProd + " | Produto: " + status);
+            System.out.println("Deseja pesquisar mais produtos ? ");
+            condicao = !(scanner.nextLine().toLowerCase().equals("n"));
+        }while(condicao);
+
+    }
 }

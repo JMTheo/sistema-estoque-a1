@@ -29,8 +29,20 @@ public class Lista {
         }
         else return "";
     }
-    // 4 S| 4
-    //Método para verificar se a posição é valida
+
+    public void listarTodosProdutos(){
+        for(int i = 0; i < this.tamanho; i++){
+            System.out.println("Codigo: " + i + " | Produto: " + this.valores[i]);
+        }
+    }
+
+    public String pesquisarElemento(int cod){
+        if(verificarNulo(cod))
+            return this.valores[cod];
+        else
+            return "";
+    }
+    //Método para verificar se a posição é valida p/ continuar com o processo
     private boolean verificarNulo(int pos){
         return pos >= 0 && pos < this.valores.length;
     }

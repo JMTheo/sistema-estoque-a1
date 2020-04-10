@@ -31,8 +31,5 @@ public class Main {
             gerenciadorLista.menu(entrada);
         }
         scanner.close();
-
     }
-
-
 }
