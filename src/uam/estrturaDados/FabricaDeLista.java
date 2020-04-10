@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class FabricaDeLista {
     private Lista listaProdutos;
+    private static Scanner scanner = new Scanner(System.in);
 
     public int menu(int escolha){
         switch (escolha){
@@ -12,9 +13,7 @@ public class FabricaDeLista {
                 break;
             case 2:
                 //TODO: Inserir elemento na lista,
-
-                System.out.println("MENU 2");
-
+                inserirItem();
                 break;
             case 3:
                 //Todo: Remover elemento da lista,
@@ -44,14 +43,37 @@ public class FabricaDeLista {
     }
 
     private void iniciarLista(){
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Digite o tamanho da lista");
 
         int tamanho = Integer.parseInt(scanner.nextLine());
 
         this.listaProdutos = new Lista(tamanho);
         System.out.println("Tamanho: " + this.listaProdutos.getTamanho());
+
+    }
+
+    private void inserirItem(){
+        int codigo = 0;
+        String nomeProd = "";
+        String status = "";
+        boolean escolha = true;
+
+        do {
+            System.out.println("Digite o codigo do produto");
+            codigo = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Digite o nome do produto");
+
+            nomeProd = scanner.nextLine();
+            status = this.listaProdutos.inserirVlr(nomeProd, codigo);
+
+            if(status.isEmpty())
+                System.out.println("Codigo maior que a lista, erro ao inserir registro");
+
+            System.out.println("Deseja cadastrar mais produtos ? ");
+            escolha = !(scanner.nextLine().toLowerCase().equals("n"));
+
+        }while(escolha);
 
     }
 

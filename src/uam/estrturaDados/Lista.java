@@ -1,35 +1,35 @@
 package uam.estrturaDados;
 
 public class Lista {
-    private int [] valores;
+    private String [] valores;
     private int tamanho;
 
     public Lista(int tamanho){
         if (tamanho > 0) {
             this.tamanho = tamanho;
-            this.valores = new int[tamanho];
+            this.valores = new String[tamanho];
         }
     }
 
-    public int inserirVlr(int valor, int pos){
+    public String inserirVlr(String valor, int pos){
         if(verificarNulo(pos)){
             this.valores[pos] = valor;
             return valor;
         }
         else
-            return -1;
+            return "";
     }
 
-    public int removerVlr(int pos){
-        int valor;
+    public String removerVlr(int pos){
+        String valor;
         if(verificarNulo(pos)){
             valor = this.valores[pos];
-            this.valores[pos] = 0;
+            this.valores[pos] = "";
             return valor;
         }
-        else return -1;
+        else return "";
     }
-
+    // 4 S| 4
     //Método para verificar se a posição é valida
     private boolean verificarNulo(int pos){
         return pos >= 0 && pos < this.valores.length;
