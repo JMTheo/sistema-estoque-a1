@@ -42,7 +42,7 @@ public class FabricaDeLista {
     private void iniciarLista(){
         System.out.println("Digite o tamanho da lista");
 
-        int tamanho = Integer.parseInt(scanner.nextLine());
+        int tamanho = Validador.validarInt(scanner.nextLine());
 
         this.listaProdutos = new Lista(tamanho);
         System.out.println("Tamanho: " + this.listaProdutos.getTamanho());
@@ -53,16 +53,20 @@ public class FabricaDeLista {
         int codigo = 0;
         String nomeProd = "";
         String status = "";
+        int quantidade;
         boolean escolha = true;
 
         do {
             System.out.println("Digite o codigo do produto");
-            codigo = Integer.parseInt(scanner.nextLine());
+            codigo = Validador.validarInt(scanner.nextLine());
 
             System.out.println("Digite o nome do produto");
-
             nomeProd = scanner.nextLine();
-            status = this.listaProdutos.inserirVlr(nomeProd, codigo);
+
+            System.out.println("Digite a quantidade do produto");
+            quantidade = Validador.validarInt(scanner.nextLine());
+
+            status = this.listaProdutos.inserirVlr(nomeProd, codigo, quantidade);
 
             if(status.isEmpty())
                 System.out.println("Codigo maior que a lista, erro ao inserir registro");
@@ -83,7 +87,7 @@ public class FabricaDeLista {
 
         do {
             System.out.println("Digite o codigo do produto");
-            codigo = Integer.parseInt(scanner.nextLine());
+            codigo = Validador.validarInt(scanner.nextLine());
 
             status = this.listaProdutos.removerVlr(codigo);
 
@@ -107,7 +111,7 @@ public class FabricaDeLista {
         String status;
         do {
             System.out.println("Digite o codigo do produto: ");
-            codProd = Integer.parseInt(scanner.nextLine());
+            codProd = Validador.validarInt(scanner.nextLine());
 
             status = this.listaProdutos.pesquisarElemento(codProd);
 

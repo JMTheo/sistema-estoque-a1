@@ -26,7 +26,7 @@ public class Main {
             System.out.println("6 - Fechar sistema");
             System.out.println("Digite um numero para prosseguir !");
 
-            entrada = Integer.parseInt(scanner.nextLine());
+            entrada = Validador.validarInt(scanner.nextLine());
 
             gerenciadorLista.menu(entrada);
         }

@@ -2,6 +2,7 @@ package uam.estrturaDados;
 
 public class Lista {
     private String [] valores;
+    private int quantidade;
     private int tamanho;
 
     public Lista(int tamanho){
@@ -11,9 +12,10 @@ public class Lista {
         }
     }
 
-    public String inserirVlr(String valor, int pos){
+    public String inserirVlr(String valor, int pos, int qtd){
         if(verificarNulo(pos)){
             this.valores[pos] = valor;
+            this.quantidade = qtd;
             return valor;
         }
         else
@@ -32,7 +34,7 @@ public class Lista {
 
     public void listarTodosProdutos(){
         for(int i = 0; i < this.tamanho; i++){
-            System.out.println("Codigo: " + i + " | Produto: " + this.valores[i]);
+            System.out.println("Codigo: " + i + " | Produto: " + this.valores[i] + " | QTD: " + this.quantidade);
         }
     }
 
