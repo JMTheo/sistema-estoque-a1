@@ -2,20 +2,21 @@ package uam.estrturaDados;
 
 public class Lista {
     private String [] valores;
-    private int quantidade;
+    private int [] quantidade;
     private int tamanho;
 
     public Lista(int tamanho){
         if (tamanho > 0) {
             this.tamanho = tamanho;
             this.valores = new String[tamanho];
+            this.quantidade = new int[1000];
         }
     }
 
     public String inserirVlr(String valor, int pos, int qtd){
         if(verificarNulo(pos)){
             this.valores[pos] = valor;
-            this.quantidade = qtd;
+            this.quantidade[pos] = qtd;
             return valor;
         }
         else
@@ -34,13 +35,13 @@ public class Lista {
 
     public void listarTodosProdutos(){
         for(int i = 0; i < this.tamanho; i++){
-            System.out.println("Codigo: " + i + " | Produto: " + this.valores[i] + " | QTD: " + this.quantidade);
+            System.out.println("Codigo: " + i + " | Produto: " + this.valores[i] + " | QTD: " + this.quantidade[i]);
         }
     }
 
     public String pesquisarElemento(int cod){
         if(verificarNulo(cod))
-            return this.valores[cod];
+            return this.valores[cod] + " | Quantidade: " + this.quantidade[cod];
         else
             return "";
     }
@@ -51,5 +52,14 @@ public class Lista {
 
     public int getTamanho() {
         return tamanho;
+    }
+
+    //Os dois métodos abaixo são questionaveis
+    public void setValores(String valores, int pos) {
+        this.valores[pos] = valores;
+    }
+
+    public void setQuantidade(int quantidade, int pos) {
+        this.quantidade[pos] = quantidade;
     }
 }

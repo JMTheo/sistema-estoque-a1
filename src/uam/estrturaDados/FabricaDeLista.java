@@ -15,34 +15,45 @@ public class FabricaDeLista {
                 }else iniciarLista();
                 break;
             case 2:
-                inserirItem();
+                if(Validador.checarLista(this.listaProdutos))
+                    inserirItem();
                 break;
             case 3:
-
-                removerItem();
+                if(Validador.checarLista(this.listaProdutos))
+                    removerItem();
                 break;
             case 4:
-                listarTodosProd();
+                if(Validador.checarLista(this.listaProdutos))
+                    listarTodosProd();
                 break;
             case 5:
-                pesquisarProd();
+                if(Validador.checarLista(this.listaProdutos))
+                    pesquisarProd();
                 break;
             case 6:
+                if(Validador.checarLista(this.listaProdutos))
+                    modificarProd();
+                break;
+            case 7:
                 System.out.println("Fechando o sistema ...");
                 break;
             default:
                 System.out.println("Digite um número valido !");
                 System.out.println("De 1 a 6!");
-
                 break;
         }
         return escolha;
     }
 
     private void iniciarLista(){
+        int tamanho;
         System.out.println("Digite o tamanho da lista");
 
-        int tamanho = Validador.validarInt(scanner.nextLine());
+        do {
+            tamanho = Validador.validarInt(scanner.nextLine());
+            if(tamanho == 0) System.out.println("O numero deve ser positivo");
+        }while(tamanho <= 0);
+
 
         this.listaProdutos = new Lista(tamanho);
         System.out.println("Tamanho: " + this.listaProdutos.getTamanho());
@@ -122,6 +133,54 @@ public class FabricaDeLista {
             System.out.println("Deseja pesquisar mais produtos ? ");
             condicao = !(scanner.nextLine().toLowerCase().equals("n"));
         }while(condicao);
+
+    }
+
+    private void modificarProd(){
+        int codigo = 0;
+        int escolha = 0;
+        String status = "";
+
+        while(true) {
+            System.out.println("O que você deseja alterar");
+            System.out.println("1 - Nome do produto");
+            System.out.println("2 - Quantidade do produto");
+            System.out.println("3 - Retornar ao menu anterior");
+
+            escolha = Validador.validarInt(scanner.nextLine());
+
+            if(escolha == 3) {
+                System.out.println("Voltando ao menu anterior ...");
+                break;
+            }
+
+            System.out.println("Digite o código do produto");
+            codigo = Validador.validarInt(scanner.nextLine());
+
+            status = this.listaProdutos.pesquisarElemento(codigo);
+
+            if(status.isEmpty())
+                System.out.println("Codigo não existe, erro ao buscar produto");
+            else{
+                switch (escolha){
+                    case 1:
+                        System.out.println("Digite o novo nome do produto");
+                        this.listaProdutos.setValores(scanner.nextLine(), codigo);
+                        System.out.println("Sucesso ao realizar alteração");
+                        break;
+                    case 2:
+                        System.out.println("Digite a nova quantidade dos produtos");
+                        this.listaProdutos.setQuantidade(Validador.validarInt(scanner.nextLine()), codigo);
+                        System.out.println("Sucesso ao realizar alteração");
+                        break;
+                    default:
+                        System.out.println("Digite um numero valido");
+                        break;
+                }
+                System.out.println("\n\n");
+            }
+        }
+
 
     }
 }
