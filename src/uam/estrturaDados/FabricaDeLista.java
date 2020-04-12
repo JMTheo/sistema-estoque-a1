@@ -6,7 +6,7 @@ public class FabricaDeLista {
     private Lista listaProdutos;
     private static Scanner scanner = new Scanner(System.in);
 
-    public int menu(int escolha){
+    public void menu(int escolha){
         switch (escolha){
             case 1:
                 if(this.listaProdutos != null){
@@ -42,7 +42,6 @@ public class FabricaDeLista {
                 System.out.println("De 1 a 6!");
                 break;
         }
-        return escolha;
     }
 
     private void iniciarLista(){
@@ -61,11 +60,11 @@ public class FabricaDeLista {
     }
 
     private void inserirItem(){
-        int codigo = 0;
-        String nomeProd = "";
-        String status = "";
+        int codigo;
+        String nomeProd;
+        String status;
         int quantidade;
-        boolean escolha = true;
+        boolean escolha;
 
         do {
             System.out.println("Digite o codigo do produto");
@@ -92,9 +91,9 @@ public class FabricaDeLista {
     }
 
     private void removerItem(){
-        int codigo = 0;
-        String status = "";
-        boolean escolha = true;
+        int codigo;
+        String status;
+        boolean escolha;
 
         do {
             System.out.println("Digite o codigo do produto");
@@ -117,7 +116,7 @@ public class FabricaDeLista {
     }
 
     private void pesquisarProd(){
-        boolean condicao = true;
+        boolean condicao;
         int codProd;
         String status;
         do {
@@ -137,9 +136,9 @@ public class FabricaDeLista {
     }
 
     private void modificarProd(){
-        int codigo = 0;
-        int escolha = 0;
-        String status = "";
+        int codigo;
+        int escolha;
+        String status;
 
         while(true) {
             System.out.println("O que você deseja alterar");
