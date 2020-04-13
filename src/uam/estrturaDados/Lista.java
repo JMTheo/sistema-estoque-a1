@@ -9,7 +9,7 @@ public class Lista {
         if (tamanho > 0) {
             this.tamanho = tamanho;
             this.valores = new String[tamanho];
-            this.quantidade = new int[1000];
+            this.quantidade = new int[tamanho];
         }
     }
 
@@ -20,7 +20,7 @@ public class Lista {
             return valor;
         }
         else
-            return "";
+                return "";
     }
 
     public String removerVlr(int pos){
@@ -28,6 +28,7 @@ public class Lista {
         if(verificarNulo(pos)){
             valor = this.valores[pos];
             this.valores[pos] = "";
+            this.quantidade[pos] = 0;
             return valor;
         }
         else return "";
@@ -35,7 +36,8 @@ public class Lista {
 
     public void listarTodosProdutos(){
         for(int i = 0; i < this.tamanho; i++){
-            System.out.println("Codigo: " + i + " | Produto: " + this.valores[i] + " | QTD: " + this.quantidade[i]);
+            if(!this.valores[i].isEmpty())
+                System.out.println("Codigo: " + i + " | Produto: " + this.valores[i] + " | QTD: " + this.quantidade[i]);
         }
     }
 

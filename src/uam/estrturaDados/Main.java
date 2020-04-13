@@ -3,15 +3,9 @@ package uam.estrturaDados;
 import java.util.Scanner;
 
 //Tema: Lista Estoque de itens
-//TODO: Validador para nao aceitar char no menu
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        init();
-    }
-
-    public static void init(){
         Scanner scanner = new Scanner(System.in);
         FabricaDeLista gerenciadorLista = new FabricaDeLista();
         int entrada = 0;

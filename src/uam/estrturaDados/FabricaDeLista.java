@@ -39,7 +39,7 @@ public class FabricaDeLista {
                 break;
             default:
                 System.out.println("Digite um número valido !");
-                System.out.println("De 1 a 6!");
+                System.out.println("De 1 a 7!");
                 break;
         }
     }
@@ -55,15 +55,13 @@ public class FabricaDeLista {
 
 
         this.listaProdutos = new Lista(tamanho);
-        System.out.println("Tamanho: " + this.listaProdutos.getTamanho());
+        System.out.println("Tamanho da lista: " + this.listaProdutos.getTamanho());
 
     }
 
     private void inserirItem(){
-        int codigo;
-        String nomeProd;
-        String status;
-        int quantidade;
+        int codigo, quantidade;
+        String nomeProd, status;
         boolean escolha;
 
         do {
@@ -119,6 +117,7 @@ public class FabricaDeLista {
         boolean condicao;
         int codProd;
         String status;
+
         do {
             System.out.println("Digite o codigo do produto: ");
             codProd = Validador.validarInt(scanner.nextLine());
@@ -132,12 +131,10 @@ public class FabricaDeLista {
             System.out.println("Deseja pesquisar mais produtos ? ");
             condicao = !(scanner.nextLine().toLowerCase().equals("n"));
         }while(condicao);
-
     }
 
     private void modificarProd(){
-        int codigo;
-        int escolha;
+        int codigo, escolha;
         String status;
 
         while(true) {
@@ -179,7 +176,5 @@ public class FabricaDeLista {
                 System.out.println("\n\n");
             }
         }
-
-
     }
 }
