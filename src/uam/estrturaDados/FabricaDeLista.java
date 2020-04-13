@@ -6,32 +6,32 @@ public class FabricaDeLista {
     private Lista listaProdutos;
     private static Scanner scanner = new Scanner(System.in);
 
-    public void menu(int escolha){
-        switch (escolha){
+    public void menu(int escolha) {
+        switch (escolha) {
             case 1:
-                if(this.listaProdutos != null){
+                if (this.listaProdutos != null) {
                     System.out.println("A lista já foi criada, retornando ao menu");
                     break;
-                }else iniciarLista();
+                } else iniciarLista();
                 break;
             case 2:
-                if(Validador.checarLista(this.listaProdutos))
+                if (Validador.checarLista(this.listaProdutos))
                     inserirItem();
                 break;
             case 3:
-                if(Validador.checarLista(this.listaProdutos))
+                if (Validador.checarLista(this.listaProdutos))
                     removerItem();
                 break;
             case 4:
-                if(Validador.checarLista(this.listaProdutos))
+                if (Validador.checarLista(this.listaProdutos))
                     listarTodosProd();
                 break;
             case 5:
-                if(Validador.checarLista(this.listaProdutos))
+                if (Validador.checarLista(this.listaProdutos))
                     pesquisarProd();
                 break;
             case 6:
-                if(Validador.checarLista(this.listaProdutos))
+                if (Validador.checarLista(this.listaProdutos))
                     modificarProd();
                 break;
             case 7:
@@ -44,14 +44,14 @@ public class FabricaDeLista {
         }
     }
 
-    private void iniciarLista(){
+    private void iniciarLista() {
         int tamanho;
         System.out.println("Digite o tamanho da lista");
 
         do {
             tamanho = Validador.validarInt(scanner.nextLine());
-            if(tamanho == 0) System.out.println("O numero deve ser positivo");
-        }while(tamanho <= 0);
+            if (tamanho == 0) System.out.println("O numero deve ser positivo");
+        } while (tamanho <= 0);
 
 
         this.listaProdutos = new Lista(tamanho);
@@ -59,7 +59,7 @@ public class FabricaDeLista {
 
     }
 
-    private void inserirItem(){
+    private void inserirItem() {
         int codigo, quantidade;
         String nomeProd, status;
         boolean escolha;
@@ -76,7 +76,7 @@ public class FabricaDeLista {
 
             status = this.listaProdutos.inserirVlr(nomeProd, codigo, quantidade);
 
-            if(status.isEmpty())
+            if (status.isEmpty())
                 System.out.println("Codigo maior que a lista, erro ao inserir registro");
             else
                 System.out.println("Sucesso ao cadastrar produto");
@@ -84,11 +84,11 @@ public class FabricaDeLista {
             System.out.println("Deseja cadastrar mais produtos ? ");
             escolha = !(scanner.nextLine().toLowerCase().equals("n"));
 
-        }while(escolha);
+        } while (escolha);
 
     }
 
-    private void removerItem(){
+    private void removerItem() {
         int codigo;
         String status;
         boolean escolha;
@@ -99,21 +99,21 @@ public class FabricaDeLista {
 
             status = this.listaProdutos.removerVlr(codigo);
 
-            if(status.isEmpty())
+            if (status.isEmpty())
                 System.out.println("Codigo não existe, erro ao excluir produto");
             else
                 System.out.println("Produto removido com sucesso");
             System.out.println("Deseja remover mais produtos ? ");
             escolha = !(scanner.nextLine().toLowerCase().equals("n"));
 
-        }while(escolha);
+        } while (escolha);
     }
 
-    private void listarTodosProd(){
+    private void listarTodosProd() {
         this.listaProdutos.listarTodosProdutos();
     }
 
-    private void pesquisarProd(){
+    private void pesquisarProd() {
         boolean condicao;
         int codProd;
         String status;
@@ -124,20 +124,20 @@ public class FabricaDeLista {
 
             status = this.listaProdutos.pesquisarElemento(codProd);
 
-            if(status.isEmpty())
+            if (status.isEmpty())
                 System.out.println("Codigo não existe, erro ao buscar produto");
             else
                 System.out.println("Codigo: " + codProd + " | Produto: " + status);
             System.out.println("Deseja pesquisar mais produtos ? ");
             condicao = !(scanner.nextLine().toLowerCase().equals("n"));
-        }while(condicao);
+        } while (condicao);
     }
 
-    private void modificarProd(){
+    private void modificarProd() {
         int codigo, escolha;
         String status;
 
-        while(true) {
+        while (true) {
             System.out.println("O que você deseja alterar");
             System.out.println("1 - Nome do produto");
             System.out.println("2 - Quantidade do produto");
@@ -145,7 +145,7 @@ public class FabricaDeLista {
 
             escolha = Validador.validarInt(scanner.nextLine());
 
-            if(escolha == 3) {
+            if (escolha == 3) {
                 System.out.println("Voltando ao menu anterior ...");
                 break;
             }
@@ -155,10 +155,10 @@ public class FabricaDeLista {
 
             status = this.listaProdutos.pesquisarElemento(codigo);
 
-            if(status.isEmpty())
+            if (status.isEmpty())
                 System.out.println("Codigo não existe, erro ao buscar produto");
-            else{
-                switch (escolha){
+            else {
+                switch (escolha) {
                     case 1:
                         System.out.println("Digite o novo nome do produto");
                         this.listaProdutos.setValores(scanner.nextLine(), codigo);

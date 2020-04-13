@@ -10,7 +10,7 @@ public class Main {
         FabricaDeLista gerenciadorLista = new FabricaDeLista();
         int entrada = 0;
 
-        while(entrada != 7){
+        while (entrada != 7) {
             System.out.println("=== Sistema de Estoque ===");
             System.out.println("1 - Iniciar a Lista");
             System.out.println("2 - Inserir um novo produto");
