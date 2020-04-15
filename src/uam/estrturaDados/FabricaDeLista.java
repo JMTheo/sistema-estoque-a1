@@ -81,7 +81,7 @@ public class FabricaDeLista {
             else
                 System.out.println("Sucesso ao cadastrar produto");
 
-            System.out.println("Deseja cadastrar mais produtos ? ");
+            System.out.println("Deseja cadastrar mais produtos ? (s | n)");
             escolha = !(scanner.nextLine().toLowerCase().equals("n"));
 
         } while (escolha);
@@ -103,7 +103,7 @@ public class FabricaDeLista {
                 System.out.println("Codigo não existe, erro ao excluir produto");
             else
                 System.out.println("Produto removido com sucesso");
-            System.out.println("Deseja remover mais produtos ? ");
+            System.out.println("Deseja remover mais produtos ? (s | n)");
             escolha = !(scanner.nextLine().toLowerCase().equals("n"));
 
         } while (escolha);
@@ -128,7 +128,7 @@ public class FabricaDeLista {
                 System.out.println("Codigo não existe, erro ao buscar produto");
             else
                 System.out.println("Codigo: " + codProd + " | Produto: " + status);
-            System.out.println("Deseja pesquisar mais produtos ? ");
+            System.out.println("Deseja pesquisar mais produtos ? (s | n)");
             condicao = !(scanner.nextLine().toLowerCase().equals("n"));
         } while (condicao);
     }
@@ -138,9 +138,9 @@ public class FabricaDeLista {
         String status;
 
         while (true) {
-            System.out.println("O que você deseja alterar");
-            System.out.println("1 - Nome do produto");
-            System.out.println("2 - Quantidade do produto");
+            System.out.println("O que você deseja fazer ?");
+            System.out.println("1 - Alterar o nome do produto");
+            System.out.println("2 - Alterar a quantidade do produto");
             System.out.println("3 - Retornar ao menu anterior");
 
             escolha = Validador.validarInt(scanner.nextLine());
@@ -170,7 +170,7 @@ public class FabricaDeLista {
                         System.out.println("Sucesso ao realizar alteração");
                         break;
                     default:
-                        System.out.println("Digite um numero valido");
+                        System.out.println("Digite um numero valido (1 a 3)");
                         break;
                 }
                 System.out.println("\n\n");

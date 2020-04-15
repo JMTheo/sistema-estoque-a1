@@ -10,6 +10,11 @@ public class Lista {
             this.tamanho = tamanho;
             this.valores = new String[tamanho];
             this.quantidade = new int[tamanho];
+
+            for(int i = 0; i < tamanho; i++){
+                this.valores[i] = "";
+                this.quantidade[i] = 0;
+            }
         }
     }
 
